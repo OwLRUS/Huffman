@@ -47,7 +47,11 @@ void BCode(Node* root, string bincode, unordered_map<char, string>& HuffCode) {
 void HuffmanCoder(const char* input_text = "text.txt", const char* output_text = "chipher text.txt") {
     FILE* input;
     fopen_s(&input, input_text, "r");
-    if (!input) exit(1);
+    if (!input) 
+    {
+        puts("HuffmanCoder ERROR: Input text does not open\n");
+        exit(1);
+    }
 
     unsigned char lett;
     map<char, int> freq;
@@ -65,7 +69,11 @@ void HuffmanCoder(const char* input_text = "text.txt", const char* output_text =
     FILE* output;
     fopen_s(&output, output_text, "wb +");
     fopen_s(&input, input_text, "rb");
-    if (!input || !output) exit(1);
+    if (!input || !output)
+    {
+        puts("HuffmanCoder ERROR: No such file or directory\n"); 
+        exit(1);
+    }
 
     fputc(count_letters, output);
     for (auto pair : freq) {
